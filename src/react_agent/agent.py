@@ -22,7 +22,7 @@ class ReActAgent:
         llm_fn: Callable[[str], str],
         tools: ToolRegistry,
         max_iterations: int = DEFAULT_MAX_ITERATIONS,
-    ):
+    ) -> None:
         self.llm_fn = llm_fn
         self.tools = tools
         self.max_iterations = max_iterations
