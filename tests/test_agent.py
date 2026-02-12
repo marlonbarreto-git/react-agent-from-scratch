@@ -3,7 +3,6 @@
 from unittest.mock import MagicMock
 
 from react_agent.agent import ReActAgent
-from react_agent.models import AgentResult
 from react_agent.tools import ToolRegistry
 
 

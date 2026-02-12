@@ -4,7 +4,7 @@ from typing import Callable
 
 from react_agent.models import AgentStep, AgentResult
 from react_agent.tools import ToolRegistry
-from react_agent.parser import parse_llm_output, ParsedAction, ParsedFinal
+from react_agent.parser import parse_llm_output, ParsedFinal
 
 DEFAULT_MAX_ITERATIONS = 10
 

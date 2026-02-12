@@ -2,7 +2,7 @@
 
 import pytest
 
-from react_agent.tools import Tool, ToolRegistry
+from react_agent.tools import ToolRegistry
 
 
 class TestToolRegistry:
