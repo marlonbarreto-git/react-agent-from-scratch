@@ -3,6 +3,8 @@
 import re
 from dataclasses import dataclass
 
+ERROR_PREVIEW_CHARS = 100
+
 
 @dataclass
 class ParsedAction:
@@ -38,7 +40,7 @@ def parse_llm_output(text: str) -> ParsedAction | ParsedFinal:
     input_match = re.search(r"Action Input:\s*(.+?)(?:\n|$)", text)
 
     if not action_match:
-        raise ValueError(f"Could not parse action from LLM output: {text[:100]}")
+        raise ValueError(f"Could not parse action from LLM output: {text[:ERROR_PREVIEW_CHARS]}")
 
     return ParsedAction(
         thought=thought,
