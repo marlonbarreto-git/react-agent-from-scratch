@@ -1,17 +1,38 @@
 """Main ReAct agent loop."""
 
+from typing import Callable
+
 from react_agent.models import AgentStep, AgentResult
 from react_agent.tools import ToolRegistry
 from react_agent.parser import parse_llm_output, ParsedAction, ParsedFinal
 
+DEFAULT_MAX_ITERATIONS = 10
+
 
 class ReActAgent:
-    def __init__(self, llm_fn, tools: ToolRegistry, max_iterations: int = 10):
+    """Agent that follows the ReAct (Reasoning + Acting) pattern.
+
+    Alternates between reasoning (Thought) and acting (Action) steps,
+    using an LLM to decide which tool to call and when to produce a
+    final answer.
+    """
+
+    def __init__(
+        self,
+        llm_fn: Callable[[str], str],
+        tools: ToolRegistry,
+        max_iterations: int = DEFAULT_MAX_ITERATIONS,
+    ):
         self.llm_fn = llm_fn
         self.tools = tools
         self.max_iterations = max_iterations
 
     def run(self, question: str) -> AgentResult:
+        """Execute the ReAct loop for a given question.
+
+        Repeatedly prompts the LLM and executes tool calls until a final
+        answer is produced or *max_iterations* is reached.
+        """
         steps = []
         prompt = self._build_initial_prompt(question)
 
@@ -44,6 +65,7 @@ class ReActAgent:
         )
 
     def _build_initial_prompt(self, question: str) -> str:
+        """Build the initial prompt with tool descriptions and the user question."""
         tool_descriptions = self.tools.get_tool_descriptions()
         return (
             f"Answer the following question using the available tools.\n\n"

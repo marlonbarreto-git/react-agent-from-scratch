@@ -6,6 +6,8 @@ from dataclasses import dataclass
 
 @dataclass
 class ParsedAction:
+    """Parsed result when the LLM decides to invoke a tool."""
+
     thought: str
     action: str
     action_input: str
@@ -13,11 +15,18 @@ class ParsedAction:
 
 @dataclass
 class ParsedFinal:
+    """Parsed result when the LLM produces a final answer."""
+
     thought: str
     answer: str
 
 
 def parse_llm_output(text: str) -> ParsedAction | ParsedFinal:
+    """Parse raw LLM text into a ``ParsedAction`` or ``ParsedFinal``.
+
+    Raises ``ValueError`` if neither a Final Answer nor an Action can be
+    extracted from the text.
+    """
     thought_match = re.search(r"Thought:\s*(.+?)(?:\n|$)", text)
     thought = thought_match.group(1).strip() if thought_match else ""
 
