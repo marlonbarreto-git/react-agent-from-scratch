@@ -1,5 +1,9 @@
 # ReAct Agent from Scratch
 
+[![CI](https://github.com/marlonbarreto-git/react-agent-from-scratch/actions/workflows/ci.yml/badge.svg)](https://github.com/marlonbarreto-git/react-agent-from-scratch/actions/workflows/ci.yml)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ReAct agent implementation from scratch with Thought-Action-Observation loop and dynamic tool registry.
 
 ## Overview
