@@ -2,10 +2,23 @@
 name = "react-agent-from-scratch"
 version = "0.1.0"
 description = "ReAct agent implementation from scratch. Thought-Action-Observation loop with dynamic tool registry."
+license = {text = "MIT"}
+authors = [{name = "Marlon Barreto", email = "mbarretot@hotmail.com"}]
+keywords = ["ReAct", "AI-agent", "LLM", "reasoning"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+]
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.10.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/marlonbarreto-git/react-agent-from-scratch"
+Repository = "https://github.com/marlonbarreto-git/react-agent-from-scratch"
+Issues = "https://github.com/marlonbarreto-git/react-agent-from-scratch/issues"
 
 [project.optional-dependencies]
 dev = [
